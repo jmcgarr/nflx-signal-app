@@ -2,6 +2,7 @@ apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'application'
 apply plugin: 'war' 
+apply plugin: 'os-package'
 
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
@@ -11,10 +12,12 @@ mainClassName = "com.netflix.HelloWorldApplication"
 
 buildscript {
     repositories {
+        jcenter()
         mavenCentral()
     }
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE'
+        classpath 'com.netflix.nebula:gradle-ospackage-plugin:2.2.6'
     }
 }
 
@@ -33,4 +36,15 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-actuator"
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testCompile "org.springframework.boot:spring-boot-starter-test"
+}
+
+ospackage {
+    requires('default-jdk')
+
+    from(war) {
+        into('/var/lib/tomcat7/webapps')
+        rename(/.*/, 'ROOT.war')
+    }
+
+    preInstall('sudo rm -rf /var/lib/tomcat7/webapps/ROOT')
 }
