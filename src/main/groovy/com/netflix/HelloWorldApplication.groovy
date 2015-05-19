@@ -8,10 +8,11 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.*
 import org.springframework.boot.context.web.SpringBootServletInitializer
-
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient
 
 @Configuration
 @EnableAutoConfiguration
+@EnableEurekaClient
 @RestController
 class HelloWorldApplication extends SpringBootServletInitializer {
 

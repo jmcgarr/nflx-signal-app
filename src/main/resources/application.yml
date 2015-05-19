@@ -1,0 +1,1 @@
+eureka.client.serviceUrl.defaultZone: http://eureka--frontend-1330195646.us-west-2.elb.amazonaws.com/v2/
