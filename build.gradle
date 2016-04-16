@@ -2,8 +2,8 @@ apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'application'
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
 
 version = "1.0.0"
 mainClassName = "com.netflix.HelloWorldApplication"
